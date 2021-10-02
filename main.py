@@ -96,6 +96,8 @@ class Database:
       raise error
       
   def save_customers_data_to_excel(self, customers:pd.DataFrame, emails:pd.DataFrame, phones:pd.DataFrame) -> None:
+    """saves customer, emails and phones dataframe to excel in output directory
+    """
     try:
       customers.to_excel("output/clientes.xlsx", index= False)
       emails.to_excel("output/emails.xlsx", index= False)
@@ -105,7 +107,7 @@ class Database:
       raise error
     
   def save_customers_data_to_database(self, customers:pd.DataFrame, emails:pd.DataFrame, phones:pd.DataFrame) -> None:
-    """saves  customer, emails and phone data into respective tables in database 
+    """ saves customer, emails and phone data into respective tables in database 
     """
     try:
       customers.to_sql('customers', self.__connection, if_exists='append', index=False)
