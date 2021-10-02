@@ -30,8 +30,7 @@ class DataTransformation:
       self.__data['birth_date'] = self.__data['birth_date'] .dt.date
       bins= [0,21,31,41,51,61,np.inf]
       labels = [1,2,3,4,5,6]
-      self.__data['age_group'] =pd.cut( self.__data['age'] , bins=bins, labels=labels, right=False)
-      # self.__data['age_group'] = self.__data['age_group'].cat.add_categories('unknown').fillna('unknown')
+      self.__data['age_group'] = pd.cut( self.__data['age'] , bins=bins, labels=labels, right=False)
       self.__data[['first_name','last_name','gender','address','email','status']] = self.__data[['first_name','last_name',
                                                                               'gender','address','email','status']].applymap(
                                                                                   lambda x: str(x).upper())
